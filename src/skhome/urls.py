@@ -5,7 +5,9 @@ from auth import views as auth_views
 from .views import (home_view, 
                     about_view, 
                     pw_protected_view,
-                    user_only_view)
+                    user_only_view,
+                    staff_only_view)
+ 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', auth_views.login_view),
@@ -16,7 +18,12 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')), 
     path('protected/', pw_protected_view),
     path('protected/user-only', user_only_view),
+    path('protected/staff-only', staff_only_view),
+    path('profiles/', include('profiles.urls')), 
 
    
 ]
- 
+
+
+
+     
