@@ -18,6 +18,9 @@ class Subscription(models.Model):
     permissions = models.ManyToManyField(Permission, limit_choices_to={"content_type__app_label": "subscriptions", "codename__in":[x[0] for x in SUBSCRIPTION_PERMISSIONS]}) # list comprehension technique
     
     
+    def __str__(self):
+        return self.name
+    
     class Meta:
         permissions = SUBSCRIPTION_PERMISSIONS
         
