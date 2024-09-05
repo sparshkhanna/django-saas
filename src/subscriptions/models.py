@@ -44,7 +44,9 @@ def user_sub_post_save(sender, instance, *args, **kwargs):
     if not ALLOW_CUSTOM_GROUPS:
         user.groups.set(groups)
     else:
-        subs_qs = Subscription.objects.filter(active=True).exclude(id=subscription_obj.id)
+        subs_qs = Subscription.objects.filter(active=True)
+        if subscription_obj is not None:
+            subs_qs = subs_qs.exclude(id=subscription_obj.id)
         subs_groups = subs_qs.values_list("groups__id", flat=True)
         subs_groups_set = set(subs_groups) 
         # groups_ids = groups.values_list('id', flat=True) # [1, 2, 3]
