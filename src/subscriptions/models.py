@@ -47,7 +47,7 @@ def user_sub_post_save(sender, instance, *args, **kwargs):
         subs_qs = Subscription.objects.filter(active=True).exclude(id=subscription_obj.id)
         subs_groups = subs_qs.values_list("groups__id", flat=True)
         subs_groups_set = set(subs_groups) 
-        groups_ids = groups.values_list('id', flat=True) # [1, 2, 3]
+        # groups_ids = groups.values_list('id', flat=True) # [1, 2, 3]
         current_groups = user.groups.all().values_list('id', flat=True)
         groups_ids_set = set(groups_ids)
         current_groups_set = set(current_groups) - subs_groups_set 
