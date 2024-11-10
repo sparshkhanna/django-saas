@@ -3,5 +3,10 @@
         {
             "path": "."
         }
-    ]
+    ],
+    "settings": {
+        "editor.fontFamily": "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
+        "editor.fontLigatures": true,
+        "editor.fontVariations": false,
+    }
 }
