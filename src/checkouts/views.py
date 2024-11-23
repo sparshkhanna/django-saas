@@ -27,11 +27,10 @@ def checkout_redirect_view(request):
     if checkout_subscription_price_id is None or obj is None:
         return redirect("/pricing")
     customer_stripe_id = request.user.customer.stripe_id
-    success_url_base = BASE_URL
     success_url_path = reverse("stripe-checkout-end")
     pricing_url_path = reverse("price")
-    success_url = f"{success_url_base}{success_url_path}"
-    return_url = f"{success_url_base}{pricing_url_path}"
+    success_url = f"{BASE_URL}{success_url_path}"
+    return_url = f"{BASE_URL}{pricing_url_path}"
     price_stripe_id = obj.stripe_id
     url = helpers.billing.start_checkout_session(
         customer_stripe_id,
