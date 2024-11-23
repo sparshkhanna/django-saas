@@ -17,18 +17,18 @@ urlpatterns = [
     # path('register/', auth_views.register_view),
     path('checkout/sub-price/<int:price_id>/', checkout_views.product_price_redirect_view, name='sub-price-checkout'),
     path('checkout/start', checkout_views.checkout_redirect_view, name='stripe-checkout-start'),
-    path('checkout/succss', checkout_views.checkout_redirect_view, name='stripe-checkout-end'),
+    path('checkout/success', checkout_views.checkout_redirect_view, name='stripe-checkout-end'),
     path('pricing/', subscriptions_views.subscription_price_view, name='pricing'),
     path('pricing/<str:interval>', subscriptions_views.subscription_price_view, name='pricing_interval'),
     path('about/', about_view),
-    path('hello-world/', home_view), # index page -> root page
+    path('hello-world/', home_view), # index page -> root page    
     path('', home_view, name='home'),
     path('hello-world.html', home_view),
     path('accounts/', include('allauth.urls')), 
-    path('protected/', pw_protected_view),
-    path('protected/user-only', user_only_view),
-    path('protected/staff-only', staff_only_view),
-    path('profiles/', include('profiles.urls')), 
+    path('protected/', pw_protected_view),    
+    path('protected/user-only', user_only_view),    
+    path('protected/staff-only', staff_only_view),   
+    path('profiles/', include('profiles.urls')),   
 
    
 ]
