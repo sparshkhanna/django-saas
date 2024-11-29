@@ -28,14 +28,17 @@ def checkout_redirect_view(request):
         return redirect("/pricing")
     customer_stripe_id = request.user.customer.stripe_id
     success_url_path = reverse("stripe-checkout-end")
-    pricing_url_path = reverse("price")
+    pricing_url_path = reverse("pricing")
     success_url = f"{BASE_URL}{success_url_path}"
-    return_url = f"{BASE_URL}{pricing_url_path}"
+    cancel_url = f"{BASE_URL}{pricing_url_path}"
     price_stripe_id = obj.stripe_id
+    print(f"BASE_URL: {BASE_URL}")
+    print(f'success URL: {success_url}')
+    print(f"Cancel URL: {cancel_url}")
     url = helpers.billing.start_checkout_session(
         customer_stripe_id,
         success_url=success_url,
-        return_url=return_url,
+        cancel_url=cancel_url,
         price_stripe_id=price_stripe_id,
         raw=False,
     )
