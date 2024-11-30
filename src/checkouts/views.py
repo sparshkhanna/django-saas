@@ -25,7 +25,7 @@ def checkout_redirect_view(request):
     except:
         obj = None 
     if checkout_subscription_price_id is None or obj is None:
-        return redirect("/pricing")
+        return redirect("pricing")
     customer_stripe_id = request.user.customer.stripe_id
     success_url_path = reverse("stripe-checkout-end")
     pricing_url_path = reverse("pricing")

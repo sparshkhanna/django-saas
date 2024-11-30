@@ -52,7 +52,7 @@ def start_checkout_session(customer_id,
       price_stripe_id="", 
       raw=True):
   if not success_url.endswith("?session_id={CHECKOUT_SESSION_ID}"):
-    success_url = "f{success_url}" + "?session_id={CHECKOUT_SESSION_ID}"
+    success_url = f"{success_url}" + "?session_id={CHECKOUT_SESSION_ID}"
   response = stripe.checkout.Session.create(
     customer=customer_id,
     success_url=success_url,
