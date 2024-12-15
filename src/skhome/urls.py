@@ -17,7 +17,7 @@ urlpatterns = [
     # path('register/', auth_views.register_view),
     path('checkout/sub-price/<int:price_id>/', checkout_views.product_price_redirect_view, name='sub-price-checkout'),
     path('checkout/start', checkout_views.checkout_redirect_view, name='stripe-checkout-start'),
-    path('checkout/success', checkout_views.checkout_redirect_view, name='stripe-checkout-end'),
+    path('checkout/success', checkout_views.checkout_finalize_view, name='stripe-checkout-end'),
     path('pricing/', subscriptions_views.subscription_price_view, name='pricing'),
     path('pricing/<str:interval>', subscriptions_views.subscription_price_view, name='pricing_interval'),
     path('about/', about_view),
