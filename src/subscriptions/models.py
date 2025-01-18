@@ -146,7 +146,8 @@ class UserSubscription(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     subscription = models.ForeignKey(Subscription, on_delete=models.SET_NULL, null=True, blank=True)
     active = models.BooleanField(default=True)
-    
+    stripe_id = models.CharField(max_length=120, null=True, blank=True)
+        
 def user_sub_post_save(sender, instance, *args, **kwargs):
     user_sub_instance = instance
     user = user_sub_instance.user
