@@ -81,7 +81,11 @@ def checkout_finalize_view(request):
         # cancel old sub
         old_stripe_id = _user_sub_obj.stripe_id
         if old_stripe_id is not None:
-            helpers.billing.cancel_subscription(old_stripe_id, reason="Auto ended, new membership", feedback="other")
+            try:
+                helpers.billing.cancel_subscription(old_stripe_id, reason="Auto ended, new membership", feedback="other")
+            except:
+                pass
+            
         # assign new sub
         for k, v in updated_sub_options.items():
             setattr(_user_sub_obj, k, v)
